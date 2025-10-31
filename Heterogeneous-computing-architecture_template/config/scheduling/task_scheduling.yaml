@@ -1,0 +1,58 @@
+# Task scheduling configuration
+
+# General scheduling settings
+scheduling:
+  # Scheduling algorithm
+  algorithm: "priority"  # priority, round_robin, fcfs, etc.
+  
+  # Task queue configuration
+  task_queue:
+    # Maximum queue size
+    max_size: 1000
+    # Queue overflow policy
+    overflow_policy: "reject"  # reject, drop, block
+    
+  # Task priorities
+  priorities:
+    # Priority levels
+    levels:
+      - name: "critical"
+        weight: 100
+        description: "Critical tasks that must be executed immediately"
+      - name: "high"
+        weight: 75
+        description: "High priority tasks"
+      - name: "normal"
+        weight: 50
+        description: "Normal priority tasks"
+      - name: "low"
+        weight: 25
+        description: "Low priority tasks"
+      - name: "background"
+        weight: 10
+        description: "Background tasks with lowest priority"
+
+  # Task placement
+  placement:
+    # Placement strategy
+    strategy: "load_balanced"  # load_balanced, dedicated, etc.
+    # Load balancing algorithm
+    load_balancing:
+      # Algorithm type
+      type: "round_robin"
+      # Threshold for load balancing
+      threshold: 0.75
+      
+  # Task lifecycle
+  lifecycle:
+    # Task timeout in milliseconds
+    timeout: 300000
+    # Retry policy
+    retry:
+      # Maximum retries
+      max_attempts: 3
+      # Backoff strategy
+      backoff:
+        type: "exponential"
+        base_delay: 1000  # milliseconds
+        max_delay: 30000  # milliseconds

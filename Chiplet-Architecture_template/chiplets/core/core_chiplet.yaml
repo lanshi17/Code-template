@@ -1,0 +1,14 @@
+name: core
+category: general_purpose
+vendor: ExampleSilicon
+revision: r0.1
+interfaces:
+  control: apb
+  data: ucie
+resources:
+  cores: 8
+  threads_per_core: 4
+  l2_cache_kb: 2048
+firmware:
+  path: firmware/core_fw.bin
+  version: 1.0.0

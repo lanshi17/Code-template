@@ -1,0 +1,176 @@
+openapi: 3.0.3
+info:
+  title: Heterogeneous Computing API
+  description: API for managing heterogeneous computing resources and executing tasks
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /devices:
+    get:
+      summary: List all devices
+      description: Returns a list of all available hardware devices
+      responses:
+        '200':
+          description: A list of devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /devices/{deviceId}:
+    get:
+      summary: Get device information
+      description: Returns information about a specific device
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Device information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '404':
+          description: Device not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /tasks:
+    post:
+      summary: Submit a task
+      description: Submits a new task for execution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskSubmission'
+      responses:
+        '201':
+          description: Task submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /tasks/{taskId}:
+    get:
+      summary: Get task status
+      description: Returns the status of a specific task
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Task status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Device:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "cpu-1"
+        type:
+          type: string
+          example: "CPU"
+        availableMemory:
+          type: integer
+          format: int64
+          example: 8589934592
+        totalMemory:
+          type: integer
+          format: int64
+          example: 8589934592
+        isAvailable:
+          type: boolean
+          example: true
+
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "task-123"
+        status:
+          type: string
+          example: "completed"
+        result:
+          type: string
+          example: "Task completed successfully"
+
+    TaskSubmission:
+      type: object
+      properties:
+        operation:
+          type: string
+          example: "matrix_multiply"
+        data:
+          type: string
+          example: "base64_encoded_data"
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "An error occurred"

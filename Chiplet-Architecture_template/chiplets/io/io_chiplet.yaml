@@ -1,0 +1,14 @@
+name: io
+category: pcie_root_complex
+vendor: ExampleIOInc
+revision: r1.2
+interfaces:
+  control: smbus
+  data: ucie
+resources:
+  pcie_lanes: 16
+  cxl_supported: true
+  dma_engines: 2
+firmware:
+  path: firmware/io_fw.bin
+  version: 0.4.0

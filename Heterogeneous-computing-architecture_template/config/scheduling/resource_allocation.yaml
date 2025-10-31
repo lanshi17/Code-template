@@ -1,0 +1,59 @@
+# Resource allocation configuration
+
+# Resource allocation policies
+allocation:
+  # Global resource policy
+  global:
+    # Policy type
+    policy: "dynamic"  # dynamic, static, hybrid
+    # Resource monitoring interval in milliseconds
+    monitor_interval: 5000
+    # Min resource utilization threshold
+    min_utilization: 0.1
+    # Max resource utilization threshold
+    max_utilization: 0.9
+    
+  # CPU resource allocation
+  cpu:
+    # Allocation algorithm
+    algorithm: "proportional"  # proportional, fixed, etc.
+    # CPU affinity policy
+    affinity:
+      # Enable CPU affinity
+      enabled: true
+      # Affinity strategy
+      strategy: "core_binding"  # core_binding, thread_binding, etc.
+    # CPU isolation
+    isolation:
+      # Isolate CPU cores for system tasks
+      enabled: true
+      # Number of cores to isolate
+      cores: 2
+      
+  # GPU resource allocation
+  gpu:
+    # Allocation algorithm
+    algorithm: "fair_share"  # fair_share, priority_based, etc.
+    # GPU memory allocation
+    memory:
+      # Allocation policy
+      policy: "dynamic"  # dynamic, static, etc.
+      # Memory reservation percentage
+      reservation: 0.1
+    # GPU compute allocation
+    compute:
+      # Compute unit allocation
+      units: "percentage"  # percentage, fixed, etc.
+      # Max compute units per task
+      max_units: 0.5
+      
+  # FPGA resource allocation
+  fpga:
+    # Allocation algorithm
+    algorithm: "dedicated"  # dedicated, shared, etc.
+    # Bitstream allocation
+    bitstream:
+      # Allocation policy
+      policy: "preloaded"  # preloaded, dynamic, etc.
+      # Cache size
+      cache_size: 100

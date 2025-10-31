@@ -1,0 +1,25 @@
+# Rust
+target/
+Cargo.lock
+
+# Models
+models/ai/llm/llama3/model.bin
+models/ai/llm/qwen/model.bin
+models/ai/embeddings/text_embedding/model.bin
+models/ai/embeddings/image_embedding/model.bin
+
+# Build artifacts
+build/
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

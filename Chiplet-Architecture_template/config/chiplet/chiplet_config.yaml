@@ -1,0 +1,49 @@
+# High-level definitions for available chiplets
+chiplets:
+  - name: core
+    type: general_purpose
+    version: 1.0
+    power_budget_w: 35
+    thermal_design_power_w: 45
+    registers: "src/chiplets/core/core_registers.rs"
+    configuration:
+      pipeline_depth: 15
+      vector_units: 2
+      cache:
+        l1_kb: 64
+        l2_kb: 512
+        coherency_protocol: mesi
+  - name: memory
+    type: hbm2e
+    version: 1.1
+    power_budget_w: 25
+    thermal_design_power_w: 30
+    registers: "src/chiplets/memory/memory_registers.rs"
+    configuration:
+      capacity_gb: 16
+      channels: 8
+      ecc: true
+      page_size_kb: 4
+  - name: io
+    type: pcie_gen5
+    version: 0.9
+    power_budget_w: 10
+    thermal_design_power_w: 15
+    registers: "src/chiplets/io/io_registers.rs"
+    configuration:
+      lanes: 16
+      link_width: x16
+      link_speed_gtps: 32
+  - name: accelerator
+    type: matrix_engine
+    version: 0.4
+    power_budget_w: 50
+    thermal_design_power_w: 60
+    registers: "src/chiplets/accelerator/accelerator_registers.rs"
+    configuration:
+      tile_count: 64
+      precision_modes:
+        - fp16
+        - int8
+        - sparsity_acceleration
+      dma_channels: 4

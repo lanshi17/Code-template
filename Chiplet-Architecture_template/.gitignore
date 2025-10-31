@@ -1,0 +1,18 @@
+# Build artifacts
+target/
+Cargo.lock
+
+# Editors
+*.swp
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Generated docs
+doc/
+
+# Misc
+.DS_Store

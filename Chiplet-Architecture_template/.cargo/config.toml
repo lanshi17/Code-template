@@ -1,0 +1,8 @@
+[build]
+target-dir = "target"
+
+[term]
+color = "auto"
+
+[alias]
+check-all = "fmt && clippy && test"

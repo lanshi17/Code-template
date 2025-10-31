@@ -1,0 +1,17 @@
+name: accelerator
+category: matrix_engine
+vendor: ExampleAccel
+revision: r0.7
+interfaces:
+  control: spi
+  data: ucie
+resources:
+  tiles: 64
+  supported_precisions:
+    - fp16
+    - bf16
+    - int8
+  on_chip_memory_mb: 128
+firmware:
+  path: firmware/accelerator_fw.bin
+  version: 0.2.5

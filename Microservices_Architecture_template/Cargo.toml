@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "src/services/user-service",
+    "src/services/order-service",
+    "src/services/payment-service",
+]

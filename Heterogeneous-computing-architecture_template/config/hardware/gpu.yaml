@@ -1,0 +1,60 @@
+# GPU hardware configuration
+
+# Basic GPU settings
+gpu:
+  # Enable/disable GPU usage
+  enabled: true
+  
+  # Number of GPUs to use
+  count: 2
+  
+  # GPU memory settings
+  memory:
+    # Total GPU memory in MB
+    total: 16384
+    # Maximum memory allocation per task in MB
+    max_allocation: 4096
+    # Memory management strategy
+    management: "dynamic"  # dynamic, static, etc.
+  
+  # Compute capabilities
+  compute:
+    # Minimum compute capability required
+    min_capability: "5.0"
+    # Target compute capability
+    target_capability: "7.5"
+    
+  # CUDA settings
+  cuda:
+    # Enable CUDA support
+    enabled: true
+    # CUDA runtime version
+    runtime_version: "11.8"
+    # CUDA context settings
+    context:
+      # Context creation flags
+      flags: "default"
+      # Device synchronization
+      sync: true
+      
+  # Performance settings
+  performance:
+    # Clock settings
+    clock:
+      # Graphics clock in MHz
+      graphics: 1500
+      # Memory clock in MHz
+      memory: 6000
+    # Power management
+    power:
+      # Max power limit in watts
+      limit: 250
+      # Power management mode
+      mode: "auto"
+      
+  # Driver settings
+  driver:
+    # Driver version compatibility
+    version: "525.60.11"
+    # Driver installation path
+    path: "/usr/lib/x86_64-linux-gnu/nvidia"

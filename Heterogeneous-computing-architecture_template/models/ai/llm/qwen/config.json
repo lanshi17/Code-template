@@ -1,0 +1,6 @@
+{
+  "model_type": "qwen",
+  "hidden_size": 2048,
+  "num_layers": 24,
+  "num_heads": 16
+}

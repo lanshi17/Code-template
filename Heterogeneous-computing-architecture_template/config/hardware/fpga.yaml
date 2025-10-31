@@ -1,0 +1,61 @@
+# FPGA hardware configuration
+
+# Basic FPGA settings
+fpga:
+  # Enable/disable FPGA usage
+  enabled: false
+  
+  # Number of FPGAs to use
+  count: 1
+  
+  # Device specifications
+  devices:
+    # Device type
+    type: "Xilinx_Versal"
+    # Device name
+    name: "VCK5000"
+    # Device architecture
+    architecture: "Versal"
+    
+  # Memory settings
+  memory:
+    # Total FPGA memory in MB
+    total: 8192
+    # DDR memory type
+    ddr_type: "DDR4"
+    # Memory bandwidth in GB/s
+    bandwidth: 64
+    
+  # Processing elements
+  pe:
+    # Number of processing elements
+    count: 1024
+    # PE width in bits
+    width: 32
+    # Clock frequency in MHz
+    clock_frequency: 300
+    
+  # Interconnect settings
+  interconnect:
+    # Interconnect type
+    type: "AXI4"
+    # Bandwidth in GB/s
+    bandwidth: 128
+    # Latency in nanoseconds
+    latency: 50
+    
+  # Programming settings
+  programming:
+    # Programming interface
+    interface: "JTAG"
+    # Programming time in seconds
+    time_limit: 300
+    # Bitstream file location
+    bitstream_path: "/opt/fpga/bitstreams"
+    
+  # Power management
+  power:
+    # Power consumption in watts
+    consumption: 150
+    # Power management mode
+    mode: "dynamic"

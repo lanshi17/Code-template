@@ -1,0 +1,53 @@
+# Main application configuration
+
+# Application settings
+application:
+  name: "Heterogeneous Computing Architecture"
+  version: "0.1.0"
+  environment: "development"
+  log_level: "INFO"
+
+# Server configuration
+server:
+  host: "0.0.0.0"
+  port: 8080
+  workers: 4
+
+# Hardware configuration
+hardware:
+  cpu:
+    enabled: true
+    max_threads: 8
+    affinity: true
+  gpu:
+    enabled: true
+    max_devices: 2
+    cuda_enabled: true
+  fpga:
+    enabled: false
+    max_devices: 1
+
+# Scheduling configuration
+scheduling:
+  task_queue_size: 1000
+  max_concurrent_tasks: 50
+  resource_monitoring_interval: 5000  # milliseconds
+  task_timeout: 300000  # milliseconds (5 minutes)
+
+# Model configuration
+models:
+  cache_size: 100
+  download_timeout: 30000  # milliseconds (30 seconds)
+  optimization_enabled: true
+
+# Data configuration
+data:
+  buffer_size: 1024
+  compression_enabled: true
+  encryption_enabled: false
+
+# Metrics configuration
+metrics:
+  enabled: true
+  endpoint: "/metrics"
+  collection_interval: 10000  # milliseconds (10 seconds)

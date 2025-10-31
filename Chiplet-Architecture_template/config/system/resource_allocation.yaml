@@ -1,0 +1,26 @@
+# High-level resource allocation directives
+allocations:
+  compute:
+    core_clusters: 2
+    threads_per_core: 4
+    accelerator_tiles_reserved: 48
+  memory:
+    high_bandwidth_slices_gb: 12
+    standard_ddr_channels: 2
+  io:
+    pcie_gen5_lanes: 8
+    cxl_ports:
+      - type: type3
+        bandwidth_gbps: 64
+scheduling:
+  policy: hybrid
+  quantum_us: 100
+  priorities:
+    realtime:
+      chiplets: [core]
+      dedicated_resources:
+        - accelerator
+    latency_sensitive:
+      chiplets: [io, memory]
+    throughput:
+      chiplets: [accelerator]

@@ -1,0 +1,18 @@
+server:
+  host: localhost
+  port: 8080
+
+database:
+  host: localhost
+  port: 5432
+  user: user
+  password: password
+  name: go_template
+
+log:
+  level: info
+  format: text
+
+jwt:
+  secret: your_jwt_secret_here
+  expiration_hours: 24

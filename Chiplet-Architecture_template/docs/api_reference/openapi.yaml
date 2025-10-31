@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Chiplet Orchestration API
+  version: 0.1.0
+  description: REST interface for monitoring and configuring chiplet deployments.
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /chiplets:
+    get:
+      summary: List available chiplets
+      operationId: listChiplets
+      responses:
+        "200":
+          description: A list of chiplets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chiplet'
+  /chiplets/{name}/metrics:
+    get:
+      summary: Retrieve runtime metrics for a chiplet
+      operationId: getChipletMetrics
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Chiplet metrics payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChipletMetrics'
+components:
+  schemas:
+    Chiplet:
+      type: object
+      required: [name, category, status]
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+        firmwareVersion:
+          type: string
+    ChipletMetrics:
+      type: object
+      required: [name, temperatureC, powerW]
+      properties:
+        name:
+          type: string
+        temperatureC:
+          type: number
+          format: float
+        powerW:
+          type: number
+          format: float
+        utilisationPct:
+          type: number
+          format: float

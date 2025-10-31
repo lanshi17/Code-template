@@ -1,0 +1,81 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  - https://github.com/pyinstaller/pyinstaller/discussions/1113
+#  - https://github.com/pyinstaller/pyinstaller/issues/2533
+PYI_BUILD_DIR/
+
+# PEP 582
+__pypackages__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Rust
+target/
+Cargo.lock
+
+# Models
+models/ai/llm/llama3/model.bin
+models/ai/llm/qwen/model.bin
+models/ai/embeddings/text_embedding/model.bin
+models/ai/embeddings/image_embedding/model.bin
+
+# Build artifacts
+build/

@@ -1,0 +1,1 @@
+// Edge-specific error types

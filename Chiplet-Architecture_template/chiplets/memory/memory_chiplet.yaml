@@ -1,0 +1,14 @@
+name: memory
+category: hbm2e
+vendor: ExampleMemoryCo
+revision: r0.3
+interfaces:
+  control: i2c
+  data: ucie
+resources:
+  capacity_gb: 16
+  channels: 8
+  ecc: true
+firmware:
+  path: firmware/memory_fw.bin
+  version: 0.9.2

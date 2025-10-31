@@ -1,0 +1,27 @@
+# System-level orchestration parameters
+deployment:
+  target_market: datacenter_inference
+  firmware_version: 0.0.1
+  base_clock_mhz: 2500
+  boost_clock_mhz: 3100
+  boot_sequence:
+    - init_power_domains
+    - train_interconnect_links
+    - enumerate_chiplets
+    - start_scheduler
+services:
+  monitoring:
+    enabled: true
+    sampling_period_ms: 1000
+  telemetry_export:
+    enabled: true
+    endpoint: "http://localhost:9090/metrics"
+    format: prometheus
+control_policies:
+  power_management:
+    governor: dynamic
+    min_idle_w: 20
+    max_peak_w: 160
+  thermal_management:
+    throttle_threshold_c: 90
+    shutdown_threshold_c: 110

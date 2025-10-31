@@ -1,0 +1,30 @@
+# UCIe-based interconnect topology configuration
+interconnect:
+  protocol: ucie
+  topology: mesh
+  lanes_per_link: 16
+  link_speed_gtps: 32
+  credit_based_flow_control: true
+  retry_policy:
+    max_retries: 3
+    backoff_ns: 25
+  monitoring:
+    enable_telemetry: true
+    counters:
+      - link_utilisation
+      - crc_errors
+      - thermal_warnings
+      - congestion_events
+links:
+  - from: core
+    to: memory
+    qos_class: latency_critical
+    virtual_channels: 2
+  - from: core
+    to: accelerator
+    qos_class: compute_dense
+    virtual_channels: 4
+  - from: io
+    to: core
+    qos_class: bulk_transfer
+    virtual_channels: 1

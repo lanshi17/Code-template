@@ -1,0 +1,163 @@
+# This file contains all available configuration options
+# with their default values (in comments).
+
+# Options for analysis running.
+run:
+  # Timeout for analysis, e.g. 30s, 5m.
+  # Default: 1m
+  timeout: 5m
+
+  # Include test files or not.
+  # Default: true
+  tests: true
+
+# Output configuration options.
+output:
+  # Format: checkstyle, code-climate, github-actions, junit-xml, json, html, line-number, checkstyle, text, tab, teamcity, sarif
+  # Default: "line-number"
+  format: checkstyle
+
+  # Print lines of code with issue.
+  # Default: true
+  print-issued-lines: true
+
+  # Print linter name in the end of issue text.
+  # Default: true
+  print-linter-name: true
+
+# All available settings of specific linters.
+linters-settings:
+  # Disable everything by default.
+  # This is a good practice to explicitly enable only those linters
+  # that you actually need, rather than disabling the unnecessary ones.
+  disable-all: true
+  
+  # Enable specific linter
+  # https://golangci-lint.run/usage/linters/
+  enable:
+    - gofmt
+    - golint
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - structcheck
+    - varcheck
+    - ineffassign
+    - deadcode
+
+linters:
+  # Disable all linters.
+  disable-all: true
+  
+  # Enable specific linter
+  # https://golangci-lint.run/usage/linters/
+  enable:
+    - gofmt
+    - golint
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - structcheck
+    - varcheck
+    - ineffassign
+    - deadcode
+
+  # Disable specific linter
+  # https://golangci-lint.run/usage/linters/
+  disable:
+    - exhaustive
+    - exhaustruct
+    - gci
+    - gochecknoglobals
+    - gochecknoinits
+    - gomnd
+    - lll
+    - misspell
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - noctx
+    - nolintlint
+    - nonamedreturns
+    - nosnakecase
+    - prealloc
+    - predeclared
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - stylecheck
+    - tenv
+    - testableexamples
+    - testpackage
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - wastedassign
+    - whitespace
+    - wrapcheck
+    - wsl
+
+issues:
+  # List of regexps of issue texts to exclude.
+  # But independently of this option we use default exclude patterns.
+  # It can be disabled by `exclude-use-default: false`.
+  # To list all excluded by default patterns execute `golangci-lint run --help`
+  exclude:
+    - "Error return value of .(.*\\.Help|.*\\.MarkFlagRequired|(\\w+\\.)?MarkPersistentFlagRequired|(\\w+\\.)?MarkFlagFilename|.*\\.MarkFlagDirname|.*\\.MarkFlagCustom)\\.is not checked"
+
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  exclude-rules:
+    # Exclude some linters from running on tests files.
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+
+    # Exclude known linters from partially hard-vendored code,
+    # which isn't likely to be changed by us.
+    - path: internal/hmac/
+      linters:
+        - gocyclo
+        - gofmt
+        - govet
+        - golint
+        - staticcheck
+        - unused
+        - gosimple
+        - structcheck
+        - varcheck
+        - ineffassign
+        - deadcode
+
+    # Exclude some staticcheck messages
+    - linters:
+        - staticcheck
+      text: "SA1019:"
+
+    # Exclude lll issues for long lines with go:generate
+    - linters:
+        - lll
+      source: "^//go:generate "
+
+  # Independently of option `exclude` we use default exclude patterns,
+  # it can be disabled by this option.
+  # Default: true
+  exclude-use-default: false
+
+  # Maximum issues count per one linter.
+  # Set to 0 to disable.
+  # Default: 50
+  max-issues-per-linter: 0
+
+  # Maximum count of issues with the same text.
+  # Set to 0 to disable.
+  # Default: 3
+  max-same-issues: 0

@@ -1,0 +1,38 @@
+# CPU hardware configuration
+
+# Basic CPU settings
+cpu:
+  # Number of logical cores to use
+  logical_cores: 8
+  
+  # CPU frequency settings
+  frequency:
+    min: 1000  # MHz
+    max: 3500  # MHz
+    governor: "performance"  # performance, powersave, etc.
+  
+  # Cache hierarchy
+  cache:
+    l1: 32  # KB
+    l2: 256  # KB
+    l3: 12288  # KB (12MB)
+  
+  # Memory settings
+  memory:
+    # Maximum memory usage (in MB)
+    max_usage: 8192
+    # Memory allocation strategy
+    allocation_strategy: "LRU"  # LRU, FIFO, etc.
+  
+  # Affinity settings
+  affinity:
+    # Enable CPU affinity
+    enabled: true
+    # CPU mask for binding threads
+    mask: "0xFF"  # Hexadecimal mask for CPU cores
+    
+  # Thread pool settings
+  thread_pool:
+    min_threads: 2
+    max_threads: 16
+    idle_timeout: 60  # seconds
